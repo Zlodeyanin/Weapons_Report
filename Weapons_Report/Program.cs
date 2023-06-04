@@ -15,13 +15,13 @@ namespace Weapons_Report
 
     class Soldier
     {
-        public Soldier() 
+        public Soldier(string rank) 
         {
             int minQuantityMounts = 0;
             int maxQuantityMounts = 13;
             Name = UserUtils.GenerateRandomName();
             Weapon = UserUtils.GenerateRandomWeapon();
-            Rank = UserUtils.GenerateRandomRank();
+            Rank = rank;
             Tour = UserUtils.GenerateRandomTour(minQuantityMounts, maxQuantityMounts);
         }
 
@@ -52,13 +52,6 @@ namespace Weapons_Report
             string[] weapons = { "Автомат", "Пулёмет", "Винтовка", "Штык нож", "Ракетница" };
             string weapon = "";
             return weapon += weapons[_random.Next(weapons.Length)];
-        }
-
-        public static string GenerateRandomRank()
-        {
-            string[] ranks = { "Старшина", "Рядовой", "Майор"};
-            string rank = "";
-            return rank += ranks[_random.Next(ranks.Length)];
         }
 
         public static int GenerateRandomTour(int min, int max)
@@ -117,12 +110,11 @@ namespace Weapons_Report
 
         private void CreateSoldiers()
         {
-            int quantitySoldiers = 10;
-
-            for (int i = 0; i < quantitySoldiers; i++)
-            {
-                _soldiers.Add(new Soldier());
-            }
+            _soldiers.Add(new Soldier("Маршал"));
+            _soldiers.Add(new Soldier("Генерал"));
+            _soldiers.Add(new Soldier("Полковник"));
+            _soldiers.Add(new Soldier("Майор"));
+            _soldiers.Add(new Soldier("Лейтенант"));
         }
 
         private void ShowAllSoldersInfo()
